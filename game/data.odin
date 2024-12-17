@@ -1,7 +1,5 @@
 package game
 
-import "core:fmt"
-
 Runtime :: struct {}
 
 runtime: ^Runtime

@@ -1,0 +1,42 @@
+{
+    "version": "2.0.0",
+    "command": "",
+    "args": [],
+    "tasks": [
+        {
+            "label": "mkdir",
+            "type": "shell",
+            "command": "cmd",
+            "args": [
+                "/C",
+                "if not exist .\\bin mkdir .\\bin"
+            ]
+        },
+        {
+            "label": "build_dev",
+            "type": "shell",
+            "command": "odin build ./main_dev -debug -out:bin/debug.exe",
+            "group": "build"
+        },
+        {
+            "label": "Debug Build",
+            "dependsOn": [
+                "mkdir",
+                "build_dev"
+            ]
+        },
+        {
+            "label": "build_release",
+            "type": "shell",
+            "command": "odin build main_release -out:bin/release.exe -strict-style -vet -no-bounds-check -o:aggressive -subsystem:windows",
+            "group": "build"
+        },
+        {
+            "label": "Release Build",
+            "dependsOn": [
+                "mkdir",
+                "build_release"
+            ]
+        }
+    ]
+}

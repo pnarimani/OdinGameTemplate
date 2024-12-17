@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "cppvsdbg",
+            "request": "launch",
+            "preLaunchTask": "Debug Build",
+            "name": "Debug",
+            "program": "${workspaceFolder}/bin/debug.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "cppvsdbg",
+            "request": "launch",
+            "preLaunchTask": "Release Build",
+            "name": "Release",
+            "program": "${workspaceFolder}/bin/release.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

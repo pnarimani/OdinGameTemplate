@@ -95,3 +95,11 @@ reset_tracking_allocator :: proc(a: ^mem.Tracking_Allocator) -> bool {
 	mem.tracking_allocator_clear(a)
 	return err
 }
+
+// make game use good GPU on laptops etc
+
+@(export)
+NvOptimusEnablement: u32 = 1
+
+@(export)
+AmdPowerXpressRequestHighPerformance: i32 = 1
