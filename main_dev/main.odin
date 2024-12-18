@@ -72,7 +72,7 @@ main :: proc() {
 
 	free_all(context.temp_allocator)
 	api.shutdown()
-	reset_tracking_allocator(&tracking_allocator);
+	reset_tracking_allocator(&tracking_allocator)
 
 	api.shutdown_window()
 	unload_game_api(&api)

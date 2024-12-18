@@ -14,7 +14,7 @@ build_game :: proc(module: string, version: int) {
         os.make_directory("bin/pdbs")
     }
 
-    cmd := fmt.tprintf("odin build game -debug -build-mode:dll -out:./bin/game_%d.dll -o:none -pdb-name:./bin/pdbs/game_%d.pdb > nul", version, version)
+    cmd := fmt.tprintf("odin build game -debug -define:RAYLIB_SHARED=true -build-mode:dll -out:./bin/game_%d.dll -o:none -pdb-name:./bin/pdbs/game_%d.pdb > nul", version, version)
     cmd_cstring := strings.unsafe_string_to_cstring(cmd)
     libc.system(cmd_cstring)
 }

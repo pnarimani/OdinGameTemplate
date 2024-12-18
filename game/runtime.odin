@@ -1,16 +1,22 @@
 package game
 
+import "core:math/linalg"
+import "core:fmt"
+import rl "vendor:raylib"
+
 Runtime :: struct {}
 
 runtime: ^Runtime
 
 @(export)
 game_update :: proc() -> bool {
-	return true
+	draw()
+	return !rl.WindowShouldClose()
 }
 
 @(export)
 game_init_window :: proc() {
+	init_raylib_window()
 }
 
 @(export)
@@ -29,6 +35,7 @@ game_shutdown :: proc() {
 
 @(export)
 game_shutdown_window :: proc() {
+	rl.CloseWindow()
 }
 
 @(export)
@@ -48,10 +55,10 @@ game_hot_reloaded :: proc(mem: rawptr) {
 
 @(export)
 game_force_reload :: proc() -> bool {
-	return false
+	return rl.IsKeyPressed(.F5)
 }
 
 @(export)
 game_force_restart :: proc() -> bool {
-	return false
+	return rl.IsKeyPressed(.F6)
 }
