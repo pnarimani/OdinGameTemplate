@@ -65,8 +65,6 @@ main :: proc() {
 			for b in tracking_allocator.bad_free_array {
 				log.errorf("Bad free at: %v", b.location)
 			}
-			libc.getchar()
-			panic("Bad free detected")
 		}
 
 		free_all(context.temp_allocator)
@@ -74,9 +72,7 @@ main :: proc() {
 
 	free_all(context.temp_allocator)
 	api.shutdown()
-	if reset_tracking_allocator(&tracking_allocator) {
-		libc.getchar()
-	}
+	reset_tracking_allocator(&tracking_allocator);
 
 	api.shutdown_window()
 	unload_game_api(&api)
